@@ -1,7 +1,5 @@
 import 'package:crypto_wallet/screends/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BottomNav extends StatefulWidget {
@@ -15,7 +13,7 @@ class _BottomNavState extends State<BottomNav> {
   //const BottomNav({Key? key}) : super(key: key);
   final _bucket = PageStorageBucket();
 
-  Widget currentScreen = HomeScreem();
+  Widget currentScreen = const HomeScreem();
 
   int indexScreen = 0;
 

@@ -1,16 +1,22 @@
-import 'package:crypto_wallet/screends/bottom_nav.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreem extends StatelessWidget {
-  //const HomeScreem({Key? key}) : super(key: key);
+import '../controllers/controller_home_page.dart';
 
+class HomeScreem extends StatefulWidget {
+  const HomeScreem({super.key});
+
+  @override
+  State<HomeScreem> createState() => _HomeScreemState();
+}
+
+class _HomeScreemState extends State<HomeScreem> {
+  //const HomeScreem({Key? key}) : super(key: key);
   final List getData = [
-    {"image": "images/reveiver.png", "name": "Receiver"},
-    {"image": "images/sender.png", "name": "Sender"},
-    {"image": "images/swap.png", "name": "Swap"},
+    {"image": "images/reveiver.png", "name": "Receber"},
+    {"image": "images/sender.png", "name": "Enviar"},
+    {"image": "images/swap.png", "name": "Trocar"},
   ];
 
   List<Color> getColors = const [
@@ -22,7 +28,7 @@ class HomeScreem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white10,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -101,11 +107,7 @@ class HomeScreem extends StatelessWidget {
                           const SizedBox(
                             height: 20,
                           ),
-                          Text(
-                            "\$12,670.90",
-                            style: GoogleFonts.lato(
-                                color: Colors.white, fontSize: 32),
-                          ),
+                          _money(),
                         ],
                       ),
                     ),
@@ -309,5 +311,16 @@ class HomeScreem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _money() {
+    return GetBuilder<ControllerHomePage>(
+        init: ControllerHomePage(),
+        builder: (context) {
+          return Text(
+            context.saldo,
+            style: GoogleFonts.lato(color: Colors.white, fontSize: 32),
+          );
+        });
   }
 }
